@@ -1,0 +1,126 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+Performance:
+  enabled: true
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - !ruby/regexp /old_and_unused\.rb$/
+    - 'bin/*'
+    - 'config/'
+    - 'config/**/*'
+    - 'db/*'
+    - 'db/**/*'
+    - 'spec/factories/*'
+    - 'spec/services/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'test/'
+    - 'test/test_helper.rb'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'lib/tasks/**/*'
+    - 'app/parsers/*'
+    - 'app/services/hh_sync.rb'
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - 'app/services/merge/*'
+    - 'app/amo/*'
+
+Metrics/LineLength:
+  Max: 200
+
+Metrics/ClassLength:
+  Max: 220
+
+Metrics/ModuleLength:
+  Max: 200
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 55
+
+Style/MixinUsage:
+  Exclude:
+    - "**/*_spec.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"
+    - '**/*.axlsx'
+    - 'app/amo/*'
+
+Style/StructInheritance:
+  Exclude:
+    - 'app/policies/**/*'
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/EnumHash:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - stage
+
+
+# only for current project
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'app/workers/update_iscr_worker.rb'
+
+Naming/PredicateName:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "app/services/merge/*"
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/services/merge/*"
