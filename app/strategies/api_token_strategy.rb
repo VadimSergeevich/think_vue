@@ -1,21 +1,27 @@
 class ApiTokenStrategy < Warden::Strategies::Base
   def valid?
-    api_token.present?
+    access_token.present?
   end
 
   def authenticate!
-    user = Kernel.const_get(scope.to_s.capitalize).find_by(api_token: api_token)
+    user = Kernel.const_get(scope.to_s.capitalize).find_by(access_token: access_token)
 
-    if user
+    if user && !access_token_expired?(user)
       success!(user)
+    elsif user && access_token_expired?(user)
+      fail!('Access token expired')
     else
-      fail!('Invalid email or password')
+      fail!('Invalid access token')
     end
   end
 
   private
 
-  def api_token
+  def access_token_expired?(user)
+    user.access_tokens_expired_at < Time.now.to_i
+  end
+
+  def access_token
     env['HTTP_AUTHORIZATION'].to_s.remove('Bearer ')
   end
 end

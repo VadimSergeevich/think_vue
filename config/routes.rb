@@ -22,4 +22,11 @@ Rails.application.routes.draw do
     root to: "home#index"
     resources :home, only: :index
   end
+
+  namespace :api do
+    namespace :v1 do
+      post "auth", to: "auth#create"
+      post "auth/refresh_token", to: "auth#refresh_token"
+    end
+  end
 end
