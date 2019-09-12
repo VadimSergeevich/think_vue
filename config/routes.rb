@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "auth", to: "auth#create"
       post "auth/refresh_token", to: "auth#refresh_token"
+      namespace :staff do
+        resources :clients, only: [:index, :create] do
+          get "validate", to: "clients#validate", on: :collection
+        end
+        get :me, to: "info#me"
+      end
     end
   end
 end
