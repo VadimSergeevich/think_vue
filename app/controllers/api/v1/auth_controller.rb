@@ -18,7 +18,7 @@ class Api::V1::AuthController < ApplicationController
     klass = params[:scope].constantize
     resource = klass.where("refresh_tokens ->> ? > '?'", params[:refresh_token], Time.now.to_i).take
     if resource.present?
-      render json: { data: {access_token: resource.access_token, expires_at: resource.access_tokens_expired_at} }
+      render json: { data: { access_token: resource.access_token, expires_at: resource.access_tokens_expired_at } }
     else
       render json: { errors: ['Invalid refresh token'] }, status: :unauthorized
     end

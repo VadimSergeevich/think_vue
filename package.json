@@ -6,12 +6,20 @@
     "@rails/activestorage": "^6.0.0-alpha",
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
+    "bulma": "^0.7.5",
+    "css-loader": "^2.1.1",
+    "node-sass": "^4.12.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
     "webpack-dev-server": "^3.8.0"
   }
 }

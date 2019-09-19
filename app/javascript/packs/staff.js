@@ -1,11 +1,8 @@
-import Vue from 'vue';
-import App from '../staff_app.vue';
+import 'bulma/bulma.sass';
+import '@fortawesome/fontawesome-free/js/all';
+import Vue from 'vue/dist/vue.esm';
+import app from './staff/app';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    render: h => h(App),
-  }).$mount();
-  document.body.appendChild(app.$el);
-
-  console.log(app);
+  new Vue({ el: '#staffApp', components: { app } });
 });

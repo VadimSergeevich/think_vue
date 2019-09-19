@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_073050) do
+ActiveRecord::Schema.define(version: 2019_09_13_090252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2019_09_07_073050) do
     t.string "access_token", default: -> { "gen_random_uuid()" }
     t.jsonb "refresh_tokens", default: -> { "jsonb_build_object(gen_random_uuid(), ((date_part('epoch'::text, now()) + (2592000)::double precision))::integer)" }
     t.integer "access_tokens_expired_at", default: -> { "((date_part('epoch'::text, now()) + (21600)::double precision))::integer" }
+    t.string "fullname"
+    t.string "phone"
     t.index ["access_token"], name: "index_clients_on_access_token", unique: true
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
