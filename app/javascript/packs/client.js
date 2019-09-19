@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import app from './client/app.vue';
-import 'bulma/bulma.sass';
+import app from '../client_app.vue';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
