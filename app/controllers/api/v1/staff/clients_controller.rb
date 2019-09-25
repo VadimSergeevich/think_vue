@@ -9,14 +9,14 @@ class Api::V1::Staff::ClientsController < Api::V1::Staff::BaseController
   end
 
   def index
-    render json: { data: Client.all }.to_json
+    render json: ClientSerializer.new(Client.all.order(created_at: :desc)).serialized_json
   end
 
   def create
     client = Client.new(client_params)
 
     if client.save
-      render json: client.to_json
+      render json: ClientSerializer.new(client).serialized_json
     else
       render json: { errors: client.errors.messages }
     end

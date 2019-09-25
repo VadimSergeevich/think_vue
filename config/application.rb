@@ -27,6 +27,10 @@ module ThinkVue
     # Tokens TTL
     config.access_tokens_ttl = 60 * 60 * 6
     config.refresh_tokens_ttl = 60 * 60 * 24 * 30
+
+    config.autoload_paths += %w[
+      app/serializers/*/**
+    ]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

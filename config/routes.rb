@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         resources :clients, only: [:index, :create] do
           get "validate", to: "clients#validate", on: :collection
         end
+        resources :organizations, only: [:index, :create]
         get :me, to: "info#me"
       end
     end
