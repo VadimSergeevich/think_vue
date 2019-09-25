@@ -8,7 +8,7 @@ q-layout(view="hHh lpR fFf")
 
 <script>
   import Navbar from './staff/components/Navbar';
-  import Dashboard from './staff/components/Dashboard';
+  import Dashboard from './staff/components/DashboardClient';
   export default {
     components: { Navbar, Dashboard },
   };

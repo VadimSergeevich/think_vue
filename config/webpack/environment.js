@@ -5,6 +5,7 @@ const pug = require('./loaders/pug');
 const sass = require('./loaders/sass');
 const babelLoaderQuasar = require('./loaders/babel-loader-quasar');
 const stylus = require('./loaders/stylus');
+const aliases = require('./utils/aliases');
 
 environment.loaders.append('stylus', stylus);
 environment.loaders.append('js', babelLoaderQuasar);
@@ -12,4 +13,5 @@ environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin());
 environment.loaders.prepend('pug', pug);
 environment.loaders.prepend('sass', sass);
 environment.loaders.prepend('vue', vue);
+environment.config.merge(aliases);
 module.exports = environment;

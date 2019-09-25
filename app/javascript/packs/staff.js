@@ -5,6 +5,7 @@ import iconSet from 'quasar/icon-set/fontawesome-v5.js';
 import '@quasar/extras/fontawesome-v5/fontawesome-v5.css';
 import '../staff/assets/styles/quasar.styl';
 import 'quasar/dist/quasar.ie.polyfills';
+import apiClient from '../utils/apiClient';
 
 import {
   Quasar,
@@ -29,9 +30,12 @@ import {
   QTh,
   QTr,
   QTd,
+  QAvatar,
   Loading,
   Ripple,
 } from 'quasar';
+
+Vue.prototype.$apiClient = apiClient;
 
 Vue.use(Quasar, {
   config: {},
@@ -57,6 +61,7 @@ Vue.use(Quasar, {
     QTh,
     QTr,
     QTd,
+    QAvatar,
   },
   directives: { Ripple },
   iconSet: iconSet,
