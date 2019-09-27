@@ -4,22 +4,17 @@ div
   OrganizationsList(:organizations='organizations' :loading='loading')
 </template>
 <script>
-  import OrganizationForm from './OrganizationForm';
-  import OrganizationsList from './OrganizationsList';
+  import OrganizationForm from './Form';
+  import OrganizationsList from './List';
+  import DashboardMixin from '../../mixins/Dashboard';
 
   export default {
+    mixins: [DashboardMixin],
     components: { OrganizationForm, OrganizationsList },
     data() {
       return {
-        loading: true,
         organizations: [{}],
       };
-    },
-    created() {
-      new this.$apiClient('/api/v1/staff/organizations').get().then(json => {
-        this.organizations = json.data.map(i => i.attributes);
-        this.loading = false;
-      });
     },
     methods: {
       addOrg(org) {
