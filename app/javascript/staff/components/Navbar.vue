@@ -10,13 +10,14 @@ div
       q-toolbar-title
         | {{ user.email }}
       .q-gutter-sm
-        q-btn(stretch flat type="a" href="staffs/edit" label="Change password")
-        q-btn(stretch flat type="a" href="staffs/sign_out" label="Sign out")
+        q-btn(stretch flat type="a" href="/staffs/edit" label="Change password")
+        q-btn(stretch flat type="a" href="/staffs/sign_out" label="Sign out")
   q-drawer(v-model="drawer" :width="200" :breakpoint="500" bordered content-class="bg-grey-3"
   show-if-above="")
     q-scroll-area.fit
       q-list(v-for="(menuItem, index) in menuList" :key="index")
-        q-item(clickable :active="menuItem.label === 'Outbox'" v-ripple)
+        q-item(clickable :active="menuItem.label === 'Outbox'" v-ripple
+        @click="changeRoute(menuItem.link)")
           q-item-section(avatar="")
             q-icon(:name="menuItem.icon")
           q-item-section
@@ -27,10 +28,22 @@ div
     {
       icon: 'fa fa-users',
       label: 'Clients',
+      link: '/clients',
     },
     {
       icon: 'fa fa-briefcase',
       label: 'Organizations',
+      link: '/organizations',
+    },
+    {
+      icon: 'fa fa-server',
+      label: 'Equipments',
+      link: '/equipments',
+    },
+    {
+      icon: 'fa fa-user-tie',
+      label: 'Staffs',
+      link: '/staffs',
     },
   ];
 
@@ -48,6 +61,11 @@ div
         user: {},
         drawer: false,
       };
+    },
+    methods: {
+      changeRoute(link) {
+        this.$router.push(link);
+      },
     },
   };
 </script>

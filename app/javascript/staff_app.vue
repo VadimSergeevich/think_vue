@@ -3,13 +3,12 @@ q-layout(view="hHh lpR fFf")
   navbar
   q-page-container
     q-page
-      dashboard
+      router-view
 </template>
 
 <script>
   import Navbar from './staff/components/Navbar';
-  import Dashboard from './staff/components/DashboardClient';
   export default {
-    components: { Navbar, Dashboard },
+    components: { Navbar },
   };
 </script>

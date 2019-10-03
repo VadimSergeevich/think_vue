@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :staff do
     root to: "home#index"
     resources :home, only: :index
+    get "/*slug", to: "home#index"
   end
 
   namespace :api do
@@ -28,10 +29,12 @@ Rails.application.routes.draw do
       post "auth", to: "auth#create"
       post "auth/refresh_token", to: "auth#refresh_token"
       namespace :staff do
-        resources :clients, only: [:index, :create] do
+        resources :clients, only: [:index, :create, :update, :show] do
           get "validate", to: "clients#validate", on: :collection
         end
-        resources :organizations, only: [:index, :create]
+        resources :equipments, only: [:index, :create, :update, :show]
+        resources :organizations, only: [:index, :create, :update, :show]
+        resources :staffs, only: [:index, :create, :update, :show]
         get :me, to: "info#me"
       end
     end

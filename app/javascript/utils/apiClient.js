@@ -26,6 +26,18 @@ export default class apiClient {
     }).then(res => res.json());
     return json;
   }
+  async patch() {
+    const json = await fetch(this.url, {
+      method: 'PATCH',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': getCSRFToken(),
+      }),
+      body: JSON.stringify(this.params),
+      credentials: 'same-origin',
+    }).then(res => res.json());
+    return json;
+  }
   async delete() {
     const json = await fetch(this.url, {
       method: 'DELETE',

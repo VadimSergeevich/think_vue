@@ -6,7 +6,10 @@ import '@quasar/extras/fontawesome-v5/fontawesome-v5.css';
 import '../staff/assets/styles/quasar.styl';
 import 'quasar/dist/quasar.ie.polyfills';
 import apiClient from '../utils/apiClient';
+import router from '../staff/router/index';
 
+Vue.prototype.$apiClient = apiClient;
+console.log(router);
 import {
   Quasar,
   QLayout,
@@ -31,11 +34,16 @@ import {
   QTr,
   QTd,
   QAvatar,
+  QDialog,
+  QCard,
+  QCardSection,
+  QCardActions,
+  QChip,
   Loading,
   Ripple,
+  ClosePopup,
+  Dialog,
 } from 'quasar';
-
-Vue.prototype.$apiClient = apiClient;
 
 Vue.use(Quasar, {
   config: {},
@@ -62,12 +70,17 @@ Vue.use(Quasar, {
     QTr,
     QTd,
     QAvatar,
+    QDialog,
+    QCard,
+    QCardSection,
+    QCardActions,
+    QChip,
   },
-  directives: { Ripple },
+  directives: { Ripple, ClosePopup },
   iconSet: iconSet,
-  plugins: { Loading },
+  plugins: { Loading, Dialog },
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  new Vue({ el: '#staffApp', render: h => h(app) });
+  new Vue({ el: '#staffApp', router, render: h => h(app) });
 });
