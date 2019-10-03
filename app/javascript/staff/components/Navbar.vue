@@ -10,8 +10,8 @@ div
       q-toolbar-title
         | {{ user.email }}
       .q-gutter-sm
-        q-btn(stretch flat type="a" href="staffs/edit" label="Change password")
-        q-btn(stretch flat type="a" href="staffs/sign_out" label="Sign out")
+        q-btn(stretch flat type="a" href="/staffs/edit" label="Change password")
+        q-btn(stretch flat type="a" href="/staffs/sign_out" label="Sign out")
   q-drawer(v-model="drawer" :width="200" :breakpoint="500" bordered content-class="bg-grey-3"
   show-if-above="")
     q-scroll-area.fit

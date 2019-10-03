@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  OrganizationForm(@addOrg="addOrg")
+  OrganizationForm(@organizationCreated="organizationCreated")
   OrganizationsList(:organizations='organizations' :loading='loading')
 </template>
 <script>
@@ -17,7 +17,7 @@ div
       };
     },
     methods: {
-      addOrg(org) {
+      organizationCreated(org) {
         this.organizations.unshift(org);
       },
     },
